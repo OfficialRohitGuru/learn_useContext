@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+"use Client"
+import {useState,useEffect} from 'react';
+import {counterContext} from './context.js';
+import Navbar from './Navbar.js';
 
 function App() {
+
+    const[count, setCount] = useState(0);
+//    function handleClick(){
+//        setCount(prev=>prev+1);
+//    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+    <counterContext.Provider value={count}>
+    <Navbar/>
+    <h1>{count}</h1>
+    <button onClick={()=>setCount(prev=>prev+1)}>increment</button>
+    </counterContext.Provider>
+    </>
   );
 }
 
